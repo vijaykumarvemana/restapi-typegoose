@@ -1,6 +1,8 @@
 import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
 import { ProductModel } from './models/product';
+import userRouter from './services/user';
+
 
 
 
@@ -61,6 +63,11 @@ app.post('/product/:id/picture', async (req: Request, res: Response) => {
         res.status(500).send(error);
     }
 });
+
+
+app.use(userRouter)
+
+
 
 
 const start = async () : Promise<void> => {
