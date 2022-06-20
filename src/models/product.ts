@@ -23,7 +23,7 @@ export class Product {
     @prop({ type: () => String, required: true })
     public image!: string;
 
-    @prop({ type: () => String, required: true })
+    @prop({ type: () => String, enum: Object.values(ProductCategory), required: true })
     public category!: string;
 
 }
