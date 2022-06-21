@@ -41,16 +41,7 @@ productRouter.put('/product/:id', async (req: Request, res: Response) => {
     }
 });
 
-productRouter.post('/product/:id/picture', async (req: Request, res: Response) => {
-    try {
-        const product = await ProductModel.findById(req.body.id);
-        product.image = req.body.image;
-        await product.save();
-        res.send(product);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
+
 
 
 export default productRouter;
