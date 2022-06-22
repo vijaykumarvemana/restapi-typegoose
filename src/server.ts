@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import listEndpoints from 'express-list-endpoints';
 import { ProductModel } from './models/product';
 import productRouter from './services/product';
 import userRouter from './services/user';
@@ -24,6 +25,7 @@ app.use("/users",userRouter)
 app.use("/products",productRouter)
 
 
+console.table(listEndpoints(app));
 
 
 const start = async () : Promise<void> => {
