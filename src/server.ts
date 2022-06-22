@@ -1,5 +1,6 @@
 import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { ProductModel } from './models/product';
 import productRouter from './services/product';
 import userRouter from './services/user';
@@ -10,6 +11,7 @@ import userRouter from './services/user';
 const app = express();
 const port = process.env.PORT || 3006;
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
@@ -18,8 +20,8 @@ app.get('/', (req: Request, res: Response) => {
 
 
 
-app.use(userRouter)
-app.use(productRouter)
+app.use("/users",userRouter)
+app.use("/products",productRouter)
 
 
 
